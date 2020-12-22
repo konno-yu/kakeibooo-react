@@ -51,5 +51,10 @@
       justify-content: left !important;
       margin-bottom: 10px;
     }
+    .selected {
+      background: #ffecb3;
+      color: #333;
+      border-left: 6px solid #333;
+    }
   }
 }
