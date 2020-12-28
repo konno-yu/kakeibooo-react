@@ -4,7 +4,10 @@ import avatorPath from './account_icon_sample.svg';
 const AppAccount: React.FC = () => {
     return(
         <div className="account-root">
-            <Avatar src={avatorPath} style={{width:80, height:80, background:"#FFF"}} />
+            <div className="account-image">
+                <Avatar src={avatorPath} className="avatar" />
+            </div>
+            <div className="username">こんの</div>
         </div>
     )
 }
