@@ -1,19 +1,27 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
-import AppIcon from './AppIcon';
-import AppMenu from './AppMenu';
-import AppAccount from './AppAccount';
+import KakeiboooDrawer from './drawer/ KakeiboooDrawer';
+import HouseholdAccount from './HouseholdAccount';
+import BudgetAnalysis from './BudgetAnalysis';
+import FoodStaffManagement from './FoodStaffManagement';
+import UserSetting from './UserSetting';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <div className="drawer">
-        <AppIcon />
-        <AppMenu />
-        <AppAccount />
+    <Router>
+      <div className="App">
+        <KakeiboooDrawer/>
+        <div className="content">
+          <Switch>
+            <Route path="/household" component={HouseholdAccount}></Route>
+            <Route path="/analysis" component={BudgetAnalysis}></Route>
+            <Route path="/foodstaff" component={FoodStaffManagement}></Route>
+            <Route path="/setting" component={UserSetting}></Route>
+          </Switch>
+        </div>
       </div>
-      <div className="content">this is content area</div>
-    </div>
+    </Router>
   );
 }
 

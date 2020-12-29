@@ -9,7 +9,6 @@
   font-weight: 600;
   color: #333333;
   .drawer {
-    width: 10%;
     flex-grow: .1;
     height: 100%;
     margin: 20px 10px 20px 20px;
@@ -41,6 +40,9 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    .icon-text {
+      text-decoration: none;
+    }
     .menu-item {
       width: 100%;
       background: none;

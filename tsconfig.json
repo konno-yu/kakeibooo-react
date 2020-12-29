@@ -23,6 +23,7 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noImplicitAny": false
   },
   "include": [
     "src"
