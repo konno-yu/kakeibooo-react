@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
 import KakeiboooDrawer from './drawer/ KakeiboooDrawer';
-import HouseholdAccount from './HouseholdAccount';
+import HouseholdAccount from './household/HouseholdAccount';
 import BudgetAnalysis from './BudgetAnalysis';
 import FoodStaffManagement from './FoodStaffManagement';
 import UserSetting from './UserSetting';
