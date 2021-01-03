@@ -2,7 +2,15 @@ import { faMapMarkerAlt, faShoppingBasket, faTrash } from "@fortawesome/free-sol
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { IconButton, InputBase } from "@material-ui/core"
 
-const ReceiptTag: React.FC = () => {
+interface ReceiptTagProps {
+    index: number;
+    onChange: (index) => void;
+}
+
+const ReceiptTag: React.FC<ReceiptTagProps> = (props: ReceiptTagProps) => {
+    function onClickDelete() {
+        props.onChange(props.index);
+    }
     return (
         <div className="tag">
             <div className="left">
@@ -19,7 +27,7 @@ const ReceiptTag: React.FC = () => {
                 </div>
             </div>
             <div className="right">
-                <IconButton>
+                <IconButton onClick={onClickDelete}>
                     <FontAwesomeIcon className="trash-icon" size="xs" icon={faTrash}/>
                 </IconButton>
             </div>

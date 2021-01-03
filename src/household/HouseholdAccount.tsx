@@ -4,19 +4,33 @@ import { Button } from '@material-ui/core';
 import './HouseholdAccount.scss';
 import ReceiptTitle from './ReceiptTitle';
 import ReceiptTag from './ReceiptTag';
+import * as React from 'react';
 
 const HouseholdAccount: React.FC = () => {
+    const [tag, setTag] = React.useState<{id: number}[]>([]);
+
+    function onClick() {
+        setTag([...tag, { id: tag.length + 1 }]);
+    }
+
+    function onTagChange(index: number) {
+        const newTag = tag.filter((_) => {
+            return _.id !== index;
+        });
+        setTag(newTag);
+    }
+
     return (
         <div className="household-root">
             <div className="calendar">
-                bb
             </div>
             <div className="receipt">
-                <ReceiptTitle/>
+                <ReceiptTitle />
                 <div className="input-form">
-                    <ReceiptTag/>
-                    <ReceiptTag/>
-                    <Button style={{marginTop:8, fontWeight:600}}><FontAwesomeIcon icon={faPlus}/>レシートを追加</Button>
+                    {
+                        tag.map(_ => <ReceiptTag index={_.id} onChange={onTagChange}/>)
+                    }
+                    <Button disabled={tag.length === 4} onClick={onClick} style={{marginTop:8, fontWeight:600}}><FontAwesomeIcon icon={faPlus}/>レシートを追加</Button>
                 </div>
                 <div style={{height:"10%", display:"flex"}}>
                     <Button style={{marginTop:8, fontWeight:600, border:"1px solid #9E9E9E", borderRadius:8, background:"#FAFAFA"}}><FontAwesomeIcon icon={faShoppingCart}/>登録</Button>
