@@ -33,8 +33,8 @@ const HouseholdAccount: React.FC = () => {
                     }
                     <Button className="add-receipt" disabled={addReceiptDisabled} onClick={onClick}><FontAwesomeIcon icon={faPlus}/>レシートを追加</Button>
                 </div>
-                <div style={{height:"10%", display:"flex"}}>
-                    <Button style={{marginTop:8, fontWeight:600, border:"1px solid #9E9E9E", borderRadius:8, background:"#FAFAFA"}}><FontAwesomeIcon icon={faShoppingCart}/>登録</Button>
+                <div className="register-part">
+                    <Button className="register-receipt" fullWidth><FontAwesomeIcon className="register-icon" icon={faShoppingCart}/>登録</Button>
                 </div>
             </div>
         </div>
