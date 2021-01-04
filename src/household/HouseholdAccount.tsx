@@ -8,6 +8,7 @@ import * as React from 'react';
 
 const HouseholdAccount: React.FC = () => {
     const [tag, setTag] = React.useState<{id: number}[]>([]);
+    const addReceiptDisabled = tag.length === 4;
 
     function onClick() {
         setTag([...tag, { id: tag.length + 1 }]);
@@ -26,11 +27,11 @@ const HouseholdAccount: React.FC = () => {
             </div>
             <div className="receipt">
                 <ReceiptTitle />
-                <div className="input-form">
+                <div className="input-part">
                     {
                         tag.map(_ => <ReceiptTag index={_.id} onChange={onTagChange}/>)
                     }
-                    <Button disabled={tag.length === 4} onClick={onClick} style={{marginTop:8, fontWeight:600}}><FontAwesomeIcon icon={faPlus}/>レシートを追加</Button>
+                    <Button className="add-receipt" disabled={addReceiptDisabled} onClick={onClick}><FontAwesomeIcon icon={faPlus}/>レシートを追加</Button>
                 </div>
                 <div style={{height:"10%", display:"flex"}}>
                     <Button style={{marginTop:8, fontWeight:600, border:"1px solid #9E9E9E", borderRadius:8, background:"#FAFAFA"}}><FontAwesomeIcon icon={faShoppingCart}/>登録</Button>
