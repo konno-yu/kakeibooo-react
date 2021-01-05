@@ -9,11 +9,13 @@
     }
     .receipt {
         width:30%;
-        background: #E0E0E0;
+        background: #cfd8dc;
         display: flex;
         flex-direction: column;
+        border-radius: 8px;
         .title {
             background: #333;
+            border-radius: 8px 8px 0 0;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -83,12 +85,20 @@
                 font-family: 'M PLUS Rounded 1c', sans-serif;
                 margin-top: 8px;
                 font-weight: 600;
+                .add-icon {
+                    margin-right: 8px;
+                }
             }
         }
         .register-part {
             height: 8%;
             margin: 8px;
             display: flex;
+            .register-receipt:disabled {
+                background: #BDBDBD;
+                border: 2px solid #9E9E9E;
+                color: #757575;
+            }
             .register-receipt {
                 font-family: 'M PLUS Rounded 1c', sans-serif;
                 font-size: 18px;
