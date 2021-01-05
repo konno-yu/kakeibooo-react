@@ -101,5 +101,27 @@
                 }
             }
         }
+        .nomoney-part {
+            height: 6%;
+            margin: 8px;
+            display: flex;
+            .register-nomoney:disabled {
+                background: #BDBDBD;
+                border: 2px solid #9E9E9E;
+                color: #757575;
+            }
+            .register-nomoney {
+                font-family: 'M PLUS Rounded 1c', sans-serif;
+                font-size: 14px;
+                color: #333;
+                font-weight: 600;
+                border-radius: 80px;
+                border: 2px solid #333;
+                background: #FFD54F;
+                .register-icon {
+                    margin-right: 8px;
+                }
+            }
+        }
     }
 }

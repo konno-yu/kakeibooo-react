@@ -1,4 +1,4 @@
-import { faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faPiggyBank, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from '@material-ui/core';
 import './HouseholdAccount.scss';
@@ -9,6 +9,7 @@ import * as React from 'react';
 const HouseholdAccount: React.FC = () => {
     const [tag, setTag] = React.useState<{id: number}[]>([]);
     const addReceiptDisabled = tag.length === 4;
+    const cannotSelectNoMoneyDay = tag.length !== 0;
 
     function onClick() {
         setTag([...tag, { id: tag.length + 1 }]);
@@ -35,6 +36,8 @@ const HouseholdAccount: React.FC = () => {
                 </div>
                 <div className="register-part">
                     <Button className="register-receipt" fullWidth><FontAwesomeIcon className="register-icon" icon={faShoppingCart}/>登録</Button>
+                <div className="nomoney-part">
+                    <Button className="register-nomoney" disabled={cannotSelectNoMoneyDay} fullWidth><FontAwesomeIcon className="register-icon" icon={faPiggyBank}/>NoマネーDAYにする</Button>
                 </div>
             </div>
         </div>
