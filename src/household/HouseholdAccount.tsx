@@ -1,9 +1,10 @@
-import { faChevronLeft, faChevronRight, faPiggyBank, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faPiggyBank, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, IconButton } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import './HouseholdAccount.scss';
 import ReceiptTitle from './ReceiptTitle';
 import ReceiptTag from './ReceiptTag';
+import ExpenseCalendar from './ExpenseCalendar';
 import * as React from 'react';
 
 const HouseholdAccount: React.FC = () => {
@@ -25,14 +26,7 @@ const HouseholdAccount: React.FC = () => {
 
     return (
         <div className="household-root">
-            <div className="calendar">
-                <div style={{padding:"0 10px", margin:"0 20px 0 0", height:"10%", display:"flex", alignItems:"center",justifyContent: "left", fontSize:26, fontWeight:900}}>
-                    <div style={{color:"#333333"}}>January</div>
-                    <div style={{margin: "0 8px", color:"#4DB6AC"}}>2021</div>
-                    <IconButton><FontAwesomeIcon icon={faChevronLeft}/></IconButton>
-                    <IconButton><FontAwesomeIcon icon={faChevronRight}/></IconButton>
-                </div>
-            </div>
+            <ExpenseCalendar/>
             <div className="receipt">
                 <ReceiptTitle />
                 <div className="input-part">
