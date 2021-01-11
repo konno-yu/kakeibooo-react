@@ -1,0 +1,54 @@
+.calendar {
+    width: 70%;
+
+    .title {
+        padding: 0 10px;
+        margin: 0 20px 0 0;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        font-size: 26px;
+        font-weight: 900;
+
+        .month {
+            color: #333333;
+        }
+
+        .year {
+            margin: 0 8px;
+            color: #4DB6AC;
+        }
+    }
+
+    .header {
+        height: 7%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 10px;
+        margin: 0 20px 0 0;
+        font-weight: 900;
+
+        .header-item {
+            width: calc(100% / 7);
+            text-align: center;
+        }
+        .sun {
+            color: #FF5252;
+        }
+
+        .sat {
+            color: #536DFE;
+        }
+    }
+
+    .body {
+        height: 12%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 10px;
+        margin: 0 20px 0 0;
+    }
+}
