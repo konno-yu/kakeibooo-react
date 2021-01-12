@@ -44,11 +44,36 @@
     }
 
     .body {
-        height: 12%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+        height: 60%;
         padding: 0 10px;
         margin: 0 20px 0 0;
+
+        .row {
+            width: 100%;
+            height: calc(100% / 5);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+
+            .row-data {
+                width: calc(100% / 7);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+
+                .date {
+                    font-weight:900;
+                    width: 20%; height: 20%;
+                    border-bottom: 3px solid #009688;
+                }
+
+                .expense {
+                    padding-top: 8px;
+                    font-size: 16;
+                }
+            }
+        }
     }
 }

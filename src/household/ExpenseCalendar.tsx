@@ -1,6 +1,7 @@
 import CalendarTitle from './CalendarTitle';
 import CalendarHeader from './CalendarHeader';
 import './ExpenseCalendar.scss';
+import CalendarRow from './CalendarRow';
 
 const ExpenseCalendar: React.FC = () => {
     const sampleData: {date: Date, expense: number, store: string}[] = [
@@ -22,14 +23,11 @@ const ExpenseCalendar: React.FC = () => {
                 </div>
                 <div className="body">
                     {
-                        sampleData.map(day => {
-                            return(
-                                <div style={{width:"10%", height:"100%", textAlign: "center", display:"flex", justifyContent:"space-around", flexDirection:"column", alignItems:"center"}}>
-                                    <div style={{fontWeight:900, width:"30%", height:"20%", borderBottom:"3px solid #009688", padding:2}}>{day.date.getDate()}</div>
-                                    <div>¥{day.expense}</div>
-                                </div>
-                            )
-                        })
+                        Object.keys(sampleData).map((weekIndex => {
+                            return (
+                                    <CalendarRow rowData={sampleData[weekIndex]}></CalendarRow>
+                                )
+                        }))
                     }
                 </div>
             </div>
