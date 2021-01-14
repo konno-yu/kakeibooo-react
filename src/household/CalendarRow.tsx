@@ -1,3 +1,5 @@
+import CalendarDate from "./ CalendarDate";
+
 interface CalendarRowProps {
     rowData: {date: Date, expense: number, store: string}[]
 }
@@ -8,10 +10,8 @@ const CalendarRow: React.FC<CalendarRowProps> = (props: CalendarRowProps) => {
             {
                 props.rowData.map(day => {
                     return (
-                        // TODO Date単位のコンポーネントに分割
                         <div className="row-data">
-                            <div className="date">{day.date.getDate()}</div>
-                            <div className="expense">¥{day.expense}</div>
+                            <CalendarDate date={day.date.getDate()} expense={day.expense}/>
                         </div>
                     );
                 })
