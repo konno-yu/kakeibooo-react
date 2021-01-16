@@ -21,7 +21,7 @@ const CalendarDate: React.FC<CalendarDateProps> = (props: CalendarDateProps) => 
     return (
         <>
             <div className={`date ${getDateLabel()}`}>{props.date}</div>
-            <div className="expense">¥{props.expense}</div>
+            <div className="expense">¥{(props.expense).toLocaleString()}</div>
         </>
     );
 }
