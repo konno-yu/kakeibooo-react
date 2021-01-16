@@ -33,13 +33,20 @@ const HouseholdAccount: React.FC = () => {
                     {
                         tag.map(_ => <ReceiptTag index={_.id} onChange={onTagChange}/>)
                     }
-                    <Button className="add-receipt" disabled={cannotAddReceipt} onClick={onClick}><FontAwesomeIcon className="add-icon" icon={faPlus}/>レシートを追加</Button>
+                    <Button className="add-receipt" disabled={cannotAddReceipt} onClick={onClick}>
+                        <FontAwesomeIcon className="add-icon" icon={faPlus}/>レシートを追加
+                    </Button>
                 </div>
                 <div className="register-part">
-                    <Button className="register-receipt" disabled={cannotRegisterReceipt} fullWidth><FontAwesomeIcon className="register-icon" icon={faShoppingCart}/>登録</Button>
+                    <Button className="register-receipt" disabled={cannotRegisterReceipt} fullWidth>
+                        <FontAwesomeIcon className="register-icon" icon={faShoppingCart}/>登録
+                    </Button>
                 </div>
                 <div className="nomoney-part">
-                    <Button className="register-nomoney" disabled={cannotSelectNoMoneyDay} fullWidth><FontAwesomeIcon className="register-icon" icon={faPiggyBank}/>NoマネーDAYにする</Button>
+                    <Button className="register-nomoney" disabled={cannotSelectNoMoneyDay} fullWidth>
+                        <FontAwesomeIcon className="register-icon" icon={faPiggyBank}/>
+                        NoマネーDAYにする
+                    </Button>
                 </div>
             </div>
         </div>
