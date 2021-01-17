@@ -87,6 +87,20 @@
                 }
             }
         }
+        .summation-part {
+            height: 10%;
+            padding: 0 20px;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px dashed #333333;
+
+            .value {
+                font-weight: 900;
+                font-size:24px;
+            }
+        }
         .register-part {
             height: 8%;
             margin: 8px;

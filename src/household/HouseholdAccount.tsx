@@ -37,6 +37,10 @@ const HouseholdAccount: React.FC = () => {
                         <FontAwesomeIcon className="add-icon" icon={faPlus}/>レシートを追加
                     </Button>
                 </div>
+                <div className="summation-part">
+                    <div>合計</div>
+                    <div className="value">¥20,000</div>
+                </div>
                 <div className="register-part">
                     <Button className="register-receipt" disabled={cannotRegisterReceipt} fullWidth>
                         <FontAwesomeIcon className="register-icon" icon={faShoppingCart}/>登録
