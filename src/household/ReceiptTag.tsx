@@ -1,4 +1,4 @@
-import { faMapMarkerAlt, faShoppingBasket, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faMapMarkerAlt, faTrash, faYenSign } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { IconButton, InputBase } from "@material-ui/core"
 
@@ -22,7 +22,7 @@ const ReceiptTag: React.FC<ReceiptTagProps> = (props: ReceiptTagProps) => {
                     <InputBase margin="dense" className="input" />
                 </div>
                 <div className="food-expense">
-                    <FontAwesomeIcon className="input-icon" icon={faShoppingBasket}/>
+                    <FontAwesomeIcon className="input-icon" icon={faYenSign}/>
                     <InputBase margin="dense" className="input" />
                 </div>
             </div>
