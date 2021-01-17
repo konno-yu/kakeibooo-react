@@ -1,0 +1,142 @@
+.calendar {
+    width: 70%;
+
+    .title {
+        padding: 0 10px;
+        margin: 0 20px 0 0;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        font-size: 26px;
+        font-weight: 900;
+
+        .month {
+            color: #333333;
+        }
+
+        .year {
+            margin: 0 8px;
+            color: #4DB6AC;
+        }
+    }
+
+    .header {
+        height: 7%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 10px;
+        margin: 0 20px 0 0;
+        font-weight: 900;
+
+        .header-item {
+            width: calc(100% / 7);
+            text-align: center;
+        }
+        .sun {
+            color: #FF5252;
+        }
+
+        .sat {
+            color: #536DFE;
+        }
+    }
+
+    .body {
+        height: 60%;
+        padding: 0 10px;
+        margin: 0 20px 0 0;
+
+        .row {
+            width: 100%;
+            height: calc(100% / 5);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+
+            .row-data {
+                width: calc(100% / 7);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+
+                .date {
+                    font-weight:900;
+                    width: 20%; height: 20%;
+                }
+
+                .green {
+                    border-bottom: 3px solid #26A69A;
+                }
+
+                .red {
+                    border-bottom: 3px solid #EF5350;
+                }
+
+                .gray {
+                    border-bottom: 3px solid #BDBDBD;
+                }
+
+                .gold {
+                    border-bottom: 3px solid #FFE54F;
+                }
+
+                .expense {
+                    padding-top: 8px;
+                    font-size: 16;
+                }
+            }
+        }
+    }
+    .summary {
+        height: 20%;
+        padding: 0 10px;
+        margin: 20px 20px 0 0;
+        display: flex;
+        justify-content: space-around;
+
+        .item {
+            width: 40%;
+            border: 3px solid #ECECEC;
+            margin: 12px;
+            border-radius: 8px;
+            display: flex;
+
+            .icon {
+                width: 30%;
+                margin: 8px;
+                background: #26A69A;
+                border-radius: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .contents {
+                width: 70%;
+                color: #333333;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                padding-left: 8px;
+
+                .label {
+                    font-size: 18px;
+                }
+
+                .unit {
+                    font-weight:700;
+                    font-size:20px;
+                }
+
+                .value {
+                    font-size: 30px;
+                    font-weight: 900;
+                }
+            }
+        }
+    }
+}
