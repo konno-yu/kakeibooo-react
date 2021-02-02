@@ -9,7 +9,6 @@ interface CalendarSummaryItemProps {
 }
 
 const CalendarSummaryItem: React.FC<CalendarSummaryItemProps> = (props: CalendarSummaryItemProps) => {
-    console.log(props);
     return (
         <div className="item">
             <div className="icon">
