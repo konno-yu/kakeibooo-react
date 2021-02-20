@@ -1,17 +1,17 @@
 import CalendarDate from "./ CalendarDate";
 
 interface CalendarRowProps {
-    rowData: {date: Date, expense: number, store: string}[]
+    rowData: { date: Date | '', expense: number }[]
 }
 
 const CalendarRow: React.FC<CalendarRowProps> = (props: CalendarRowProps) => {
     return(
         <div className="row">
             {
-                props.rowData.map(day => {
+                props.rowData.map(dayData => {
                     return (
                         <div className="row-data">
-                            <CalendarDate date={day.date.getDate()} expense={day.expense}/>
+                            <CalendarDate data={dayData}/>
                         </div>
                     );
                 })

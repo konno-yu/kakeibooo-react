@@ -3,61 +3,49 @@ import CalendarHeader from './CalendarHeader';
 import './ExpenseCalendar.scss';
 import CalendarRow from './CalendarRow';
 import CalendarSummary from './CalendarSummary';
+import * as DateFns from 'date-fns';
+import { useContext, useEffect, useRef } from 'react';
+import { calendarContext } from './CalendarContext';
 
-type SampleData = {
-    date: Date;
+
+type CalendarData = {
+    date: Date | '';
     expense: number;
-    store: string;
 }
 
-const ExpenseCalendar: React.FC = () => {
-    const sampleData: {[weekIndex: string]: SampleData[]} = {
-        1: [
-            {date: new Date("2021-01-01T00:00:00"), expense: 1200, store: "サミット"},
-            {date: new Date("2021-01-02T00:00:00"), expense: 1400, store: "サミット"},
-            {date: new Date("2021-01-03T00:00:00"), expense: 2200, store: "サミット"},
-            {date: new Date("2021-01-04T00:00:00"), expense: 700, store: "サミット"},
-            {date: new Date("2021-01-05T00:00:00"), expense: 200, store: "サミット"},
-            {date: new Date("2021-01-06T00:00:00"), expense: 1150, store: "サミット"},
-            {date: new Date("2021-01-07T00:00:00"), expense: 0, store: "サミット"}
-        ],
-        2: [
-            {date: new Date("2021-01-08T00:00:00"), expense: 700, store: "サミット"},
-            {date: new Date("2021-01-09T00:00:00"), expense: 600, store: "サミット"},
-            {date: new Date("2021-01-10T00:00:00"), expense: 3200, store: "サミット"},
-            {date: new Date("2021-01-11T00:00:00"), expense: 1300, store: "サミット"},
-            {date: new Date("2021-01-12T00:00:00"), expense: 1450, store: "サミット"},
-            {date: new Date("2021-01-13T00:00:00"), expense: 2500, store: "サミット"},
-            {date: new Date("2021-01-14T00:00:00"), expense: 500, store: "サミット"}
-        ],
-        3: [
-            {date: new Date("2021-01-15T00:00:00"), expense: 900, store: "サミット"},
-            {date: new Date("2021-01-16T00:00:00"), expense: 1100, store: "サミット"},
-            {date: new Date("2021-01-17T00:00:00"), expense: 1250, store: "サミット"},
-            {date: new Date("2021-01-18T00:00:00"), expense: 0, store: "サミット"},
-            {date: new Date("2021-01-19T00:00:00"), expense: 400, store: "サミット"},
-            {date: new Date("2021-01-20T00:00:00"), expense: 0, store: "サミット"},
-            {date: new Date("2021-01-21T00:00:00"), expense: 500, store: "サミット"}
-        ],
-        4: [
-            {date: new Date("2021-01-22T00:00:00"), expense: 1000, store: "サミット"},
-            {date: new Date("2021-01-23T00:00:00"), expense: 1100, store: "サミット"},
-            {date: new Date("2021-01-24T00:00:00"), expense: 1200, store: "サミット"},
-            {date: new Date("2021-01-25T00:00:00"), expense: 1300, store: "サミット"},
-            {date: new Date("2021-01-26T00:00:00"), expense: 1400, store: "サミット"},
-            {date: new Date("2021-01-27T00:00:00"), expense: 1500, store: "サミット"},
-            {date: new Date("2021-01-28T00:00:00"), expense: 2500, store: "サミット"}
-        ],
-        5: [
-            {date: new Date("2021-01-29T00:00:00"), expense: 0, store: "サミット"},
-            {date: new Date("2021-01-30T00:00:00"), expense: 0, store: "サミット"},
-            {date: new Date("2021-01-31T00:00:00"), expense: 0, store: "サミット"},
-            {date: new Date("2021-02-01T00:00:00"), expense: 0, store: "サミット"},
-            {date: new Date("2021-02-02T00:00:00"), expense: 0, store: "サミット"},
-            {date: new Date("2021-02-03T00:00:00"), expense: 1200, store: "サミット"},
-            {date: new Date("2021-02-04T00:00:00"), expense: 0, store: "サミット"}
-        ]
+/**
+ * 曜日と日付を考慮して月のカレンダー情報を構築する
+ */
+function createInitalCalendarData(targetDate: Date) {
+    const calendarData: Record<string, CalendarData[]> = {};
+    const today = targetDate;
+    today.setHours(0,0, 0);
+    const daysInMonth = DateFns.getDaysInMonth(today);
+    for (let i = 1; i <= daysInMonth; i++) {
+        const weekIndex = DateFns.getWeekOfMonth(DateFns.setDate(today, i));
+        if (calendarData[weekIndex] === undefined) {
+            calendarData[weekIndex] = Array<CalendarData>(7).fill({date: '', expense: -1});
+        }
+        calendarData[weekIndex][DateFns.getDay(DateFns.setDate(today, i))] = ({ date: DateFns.setDate(today, i), expense: 10 });
     }
+    return calendarData;
+}
+
+
+const ExpenseCalendar: React.FC = () => {
+    const context = useContext(calendarContext);
+    const dateData: Record<string, CalendarData[]> = createInitalCalendarData(context.targetDate);
+    const prevTargetDate = useRef<Date>();
+    useEffect(() => {
+        // TODO 日付の変更でもこのuseEffectを通ってしまっているので要カイゼン
+        // TODO 月だけを保持する値を定義しないとむり？
+        if (prevTargetDate.current && (prevTargetDate.current.getMonth() !== context.targetDate.getMonth())) {
+            // 月が変わった時のみカレンダー情報の書き換えを実行する
+            createInitalCalendarData(context.targetDate);
+        }
+        prevTargetDate.current = context.targetDate;
+    }, [context.targetDate]);
+
     return(
         <div className="calendar">
             <div className="title">
@@ -68,9 +56,9 @@ const ExpenseCalendar: React.FC = () => {
             </div>
             <div className="body">
                 {
-                    Object.keys(sampleData).map((weekIndex => {
+                    Object.keys(dateData).map((weekIndex => {
                         return (
-                                <CalendarRow rowData={sampleData[weekIndex]}></CalendarRow>
+                                <CalendarRow rowData={dateData[weekIndex]}></CalendarRow>
                             )
                     }))
                 }
