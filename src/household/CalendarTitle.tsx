@@ -27,20 +27,20 @@ const CalendarTitle: React.FC = () => {
 
     function goPrevMonth() {
         const prevMonth = new Date(context.targetDate);
-        prevMonth.setMonth(context.targetDate.getMonth() - 1);
+        prevMonth.setMonth(context.targetDate.getMonth() - 1, 1);
         context.setTargetDate(prevMonth);
     }
 
     function goNextMonth() {
         const nextMonth = new Date(context.targetDate);
-        nextMonth.setMonth(context.targetDate.getMonth() + 1);
+        nextMonth.setMonth(context.targetDate.getMonth() + 1, 1);
         context.setTargetDate(nextMonth);
     }
     return (
         <>
-            <div className="month">{getEnglishNotation(context.targetDate.getMonth() + 1)}</div>
-            <div className="year">{context.targetDate.getFullYear()}</div>
             <IconButton onClick={() => goPrevMonth()}><FontAwesomeIcon icon={faChevronLeft}/></IconButton>
+            <div className="year">{context.targetDate.getFullYear()}</div>
+            <div className="month">{getEnglishNotation(context.targetDate.getMonth() + 1)}</div>
             <IconButton onClick={() => goNextMonth()}><FontAwesomeIcon icon={faChevronRight}/></IconButton>
         </>
     )
