@@ -1,28 +1,29 @@
 import React from 'react';
 import { calendarContext } from './CalendarContext';
-// import { DateContext } from './HouseholdAccount';
+
 interface CalendarDateProps {
-    date: number;
-    expense: number;
+    data: { date: Date | '', expense: number }
 }
 
 const CalendarDate: React.FC<CalendarDateProps> = (props: CalendarDateProps) => {
     const context = React.useContext(calendarContext);
-    function changeDate(targetDate: number) {
+    function changeDate(targetDate: Date | '') {
+        if (typeof targetDate === 'string') return;
         const newDate = new Date(context.targetDate);
-        newDate.setDate(targetDate);
+        newDate.setDate(targetDate.getDate());
         context.setTargetDate(newDate);
     }
     function addColorClass() {
         const max = 40000;
         const perDay = max / 31;
-        if(props.expense === 0) {
+        if (!props.data.expense) return;
+        if (props.data.expense === 0) {
             return 'gold';
         }
-        if((perDay * 1.5) < props.expense) {
+        if ((perDay * 1.5) < props.data.expense) {
             return 'red';
         }
-        if((perDay * 0.5) > props.expense) {
+        if ((perDay * 0.5) > props.data.expense) {
             return 'green';
         }
         return 'gray';
@@ -30,10 +31,20 @@ const CalendarDate: React.FC<CalendarDateProps> = (props: CalendarDateProps) => 
 
     return (
         <>
-            <div onClick={() => changeDate(props.date)} className={`date ${addColorClass()}`}>{props.date}</div>
-            <div className="expense">¥{(props.expense).toLocaleString()}</div>
-        </>
-    );
-}
+            { props.data.date &&
+                <>
+                <div onClick={() => changeDate(props.data.date)} className={`date ${addColorClass()}`}>{props.data.date.getDate()}</div>
+                    <div className="expense">¥{(props.data.expense).toLocaleString()}</div>
+                </>
+            }
+            { (!props.data.date && props.data.expense > 0) &&
+                <>
+                    <div className="date"></div>
+                    <div className="expense"></div>
+                </>
+            }
+            </>
+        );
+    }
 
-export default CalendarDate;
+    export default CalendarDate;
