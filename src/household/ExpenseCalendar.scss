@@ -44,13 +44,14 @@
   }
 
   .body {
-    height: 60%;
+    height: 65%;
     padding: 0 10px;
     margin: 0 20px 0 0;
 
     .row {
       width: 100%;
-      height: calc(100% / 5);
+      height: calc(100% / 6);
+      padding-top: 4px;
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -94,9 +95,9 @@
     }
   }
   .summary {
-    height: 20%;
+    height: 18%;
     padding: 0 10px;
-    margin: 20px 20px 0 0;
+    margin: 12px 20px 0 0;
     display: flex;
     justify-content: space-around;
 
@@ -124,6 +125,7 @@
         flex-direction: column;
         justify-content: space-evenly;
         padding-left: 8px;
+        margin: 4px;
 
         .label {
           font-size: 18px;
@@ -131,11 +133,11 @@
 
         .unit {
           font-weight: 700;
-          font-size: 20px;
+          font-size: 18px;
         }
 
         .value {
-          font-size: 30px;
+          font-size: 22px;
           font-weight: 900;
         }
       }
